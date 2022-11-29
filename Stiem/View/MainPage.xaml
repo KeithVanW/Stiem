@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Stiem.View.MainPage"
+             xmlns:model="clr-namespace:Stiem.Model"
+             xmlns:viewmodel="clr-namespace:Stiem.ViewModel"
+             Title="Games"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             ios:Page.UseSafeArea="True"
+             x:DataType="viewmodel:GamesViewModel" MaximumHeightRequest="900" MaximumWidthRequest="450">
+
+    <!--Header-->
+
+    <Grid ColumnDefinitions="64, *, 64"
+          RowDefinitions="64, 64, 64, *, 64"
+          BackgroundColor="LightGrey">
+
+        <Button Text="home"
+                Grid.Column="0"
+                BackgroundColor="Red"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Clicked="homeButton_Clicked"
+                Command="{Binding GoToHomeCommand}"/>
+
+        <Label Grid.Column="1"
+               FontSize="36"
+               HorizontalTextAlignment="Center"
+               TextColor="Black">
+            STIEM!
+        </Label>
+
+        <Button Text="Cart"
+                Grid.Column="2"
+                BackgroundColor="Blue"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Command="{Binding GoToCartCommand}"/>
+
+        <Label Grid.Column="0"
+               Grid.Row="1"
+               Grid.ColumnSpan="3"
+               FontSize="24"
+               HorizontalTextAlignment="Start"
+               TextColor="Black">
+            Search
+        </Label>
+        
+        <Entry Grid.Row="1"
+               Grid.Column="1"
+               Grid.ColumnSpan="2"
+               Margin="15"
+               BackgroundColor="Black">
+            
+        </Entry>
+        
+        
+
+        <Label Grid.Column="0"
+               Grid.Row="2"
+               Grid.ColumnSpan="3"
+               FontSize="24"
+               HorizontalTextAlignment="Start"
+               TextColor="Black">
+            Filter
+        </Label>
+
+        <!--Body-->
+
+        <CollectionView
+                ItemsSource="{Binding Games}"
+                SelectionMode="None"
+                Grid.Row="3"
+                Grid.Column="0"
+                Grid.ColumnSpan="3">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Game">
+                    <Grid Padding="10" ColumnDefinitions="125,*">
+                        <Image
+                            BackgroundColor="ForestGreen"
+                                        Aspect="AspectFill"
+                                        HeightRequest="175"
+                                        Source="{Binding ImageURL}"
+                                        WidthRequest="125" />
+                        <VerticalStackLayout
+                                        Grid.Column="1"
+                                        Padding="10">
+
+                            <Label 
+                                Style="{StaticResource MicroLabel}" 
+                                Text="{Binding Developer}"
+                                TextColor="Black" />
+                            
+                            <Label 
+                                Style="{StaticResource MediumLabel}" 
+                                Text="{Binding Name}"
+                                TextColor="Black" />
+
+                            <Label 
+                                Style="{StaticResource MicroLabel}" 
+                                Text="{Binding Description}"
+                                TextColor="Black" />
+
+                            <Label 
+                                Style="{StaticResource MicroLabel}" 
+                                Text="{Binding Genre}"
+                                TextColor="Black" />
+
+                            <Label 
+                                Style="{StaticResource MicroLabel}" 
+                                Text="{Binding Platform}"
+                                TextColor="Black" />
+
+                            <Label 
+                                Style="{StaticResource MediumLabel}" 
+                                Text="{Binding Price}"
+                                TextColor="Black" />
+
+                            <Button Grid.Column="1"
+                                FontSize="12"
+                                Text="Add to Cart"
+                                TextColor="Black"
+                                BackgroundColor="ForestGreen"
+                                Padding="5" />
+                            
+
+                        </VerticalStackLayout>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!--Footer-->
+        
+        
+        
+
+        <!--monkeyapp-->
+        <!--<Grid
+        ColumnDefinitions="*,*"
+        ColumnSpacing="5"
+        RowDefinitions="Auto,*"
+        RowSpacing="0">
+
+            <CollectionView
+                ItemsSource="{Binding Games}"
+                SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Game">
+                        <Grid Padding="0" ColumnDefinitions="125,*">
+                            <Image
+                                        Aspect="AspectFill"
+                                        HeightRequest="125"
+                                        Source="{Binding ImageURL}"
+                                        WidthRequest="125" />
+                            <VerticalStackLayout
+                                        Grid.Column="1"
+                                        Padding="10">
+                                <Label Style="{StaticResource LargeLabel}" Text="{Binding Name}" />
+                                <Label Style="{StaticResource MediumLabel}" Text="{Binding Price}" />
+                            </VerticalStackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>-->
+        
+        
+    </Grid>
+</ContentPage>
