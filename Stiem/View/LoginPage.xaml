@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Stiem.View.LoginPage"
+             Title="Login"
+             xmlns:viewmodel="clr-namespace:Stiem.ViewModel"
+             x:DataType="viewmodel:LoginViewModel">
+
+    <Grid ColumnDefinitions="*, 100, 150, *"
+          RowDefinitions="*, 100, 100, 100, *"
+          BackgroundColor="Black">
+        
+        <Label Grid.Row="1"
+               Grid.Column="1"
+               Text="Username"/>
+        
+        <Entry Grid.Row="1"
+               Grid.Column="2"/>
+        
+        <Label Grid.Row="2"
+               Grid.Column="1"
+               Text ="Password"/>
+        
+        <Entry Grid.Row="2"
+               Grid.Column="2"
+               IsPassword="True"/>
+
+        <Button Text="Login"
+                Grid.Row="3"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Command="{Binding GoToMainCommand}"/>
+
+    </Grid>
+    
+</ContentPage>

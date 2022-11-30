@@ -20,7 +20,6 @@
                 BackgroundColor="Red"
                 VerticalOptions="Center"
                 HorizontalOptions="Center"
-                Clicked="homeButton_Clicked"
                 Command="{Binding GoToHomeCommand}"/>
 
         <Label Grid.Column="1"
@@ -132,40 +131,6 @@
         </CollectionView>
 
         <!--Footer-->
-        
-        
-        
-
-        <!--monkeyapp-->
-        <!--<Grid
-        ColumnDefinitions="*,*"
-        ColumnSpacing="5"
-        RowDefinitions="Auto,*"
-        RowSpacing="0">
-
-            <CollectionView
-                ItemsSource="{Binding Games}"
-                SelectionMode="None">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="model:Game">
-                        <Grid Padding="0" ColumnDefinitions="125,*">
-                            <Image
-                                        Aspect="AspectFill"
-                                        HeightRequest="125"
-                                        Source="{Binding ImageURL}"
-                                        WidthRequest="125" />
-                            <VerticalStackLayout
-                                        Grid.Column="1"
-                                        Padding="10">
-                                <Label Style="{StaticResource LargeLabel}" Text="{Binding Name}" />
-                                <Label Style="{StaticResource MediumLabel}" Text="{Binding Price}" />
-                            </VerticalStackLayout>
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </Grid>-->
-        
         
     </Grid>
 </ContentPage>
