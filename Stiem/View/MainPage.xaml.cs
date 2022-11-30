@@ -7,15 +7,5 @@ public partial class MainPage : ContentPage
 		InitializeComponent();
 		BindingContext = viewModel;
 	}
-
-    private void cartButton_Clicked(object sender, EventArgs e)
-    {
-
-    }
-
-    private void homeButton_Clicked(object sender, EventArgs e)
-    {
-
-    }
 }
 

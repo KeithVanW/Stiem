@@ -27,7 +27,7 @@
     <ShellContent
         Shell.NavBarIsVisible="true"
         Title="Games"
-        ContentTemplate="{DataTemplate view:MainPage}"
-        Route="MainPage" />
+        ContentTemplate="{DataTemplate view:LoginPage}"
+        Route="LoginPage"/>
 
 </Shell>

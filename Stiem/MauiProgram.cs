@@ -17,12 +17,20 @@ public static class MauiProgram
 			});
 
         builder.Services.AddSingleton<GameService>();
-		builder.Services.AddSingleton<GamesViewModel>();
-		builder.Services.AddSingleton<MainPage>();
+		builder.Services.AddSingleton<CartService>();
+        builder.Services.AddSingleton<UserService>();
 
-		builder.Services.AddTransient<GameDetailsViewModel>();
-		builder.Services.AddTransient<DetailsPage>();
+        builder.Services.AddSingleton<GamesViewModel>();
+        builder.Services.AddSingleton<GameDetailsViewModel>();
+		builder.Services.AddSingleton<CartViewModel>();
+        builder.Services.AddSingleton<LoginViewModel>();
 
-		return builder.Build();
+        builder.Services.AddSingleton<MainPage>();
+        //builder.Services.AddTransient<DetailsPage>();
+        builder.Services.AddSingleton<CartPage>();
+        builder.Services.AddSingleton<LoginPage>();
+
+
+        return builder.Build();
 	}
 }

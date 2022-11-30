@@ -1,9 +1,6 @@
-﻿using Microsoft.Maui.Controls;
-using Stiem.Services;
+﻿using Stiem.Services;
 using Stiem.View;
 using System.Collections.ObjectModel;
-using static System.Net.Mime.MediaTypeNames;
-using System.ComponentModel.DataAnnotations;
 
 namespace Stiem.ViewModel
 {
@@ -53,7 +50,7 @@ namespace Stiem.ViewModel
         [RelayCommand]
         async Task GoToCart()
         {
-
+            await Shell.Current.GoToAsync(nameof(CartPage));
         }
 
 
