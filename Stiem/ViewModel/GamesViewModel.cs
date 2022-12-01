@@ -7,11 +7,14 @@ namespace Stiem.ViewModel
     public partial class GamesViewModel : BaseViewModel
     {
         public ObservableCollection<Game> Games { get; } = new();
+        public CartService _cartService { get; }
+
         GameService _gameService;
-        public GamesViewModel(GameService gameService)
+        public GamesViewModel(GameService gameService, CartService cartService)
         {
             Title = "Stiem";
             _gameService = gameService;
+            _cartService = cartService;
             _ = GetGamesAsync();
 
         }
@@ -28,29 +31,15 @@ namespace Stiem.ViewModel
         }
 
         [RelayCommand]
-        async Task GoToDetails(GameService game)
-        {
-            if (game == null)
-            {
-                return;
-            }
-
-            await Shell.Current.GoToAsync(nameof(DetailsPage), true, new Dictionary<string, object>
-            {
-                { "Game", game }
-            });
-        }
-
-        [RelayCommand]
-        async Task GoToHome()
-        {
-
-        }
-
-        [RelayCommand]
         async Task GoToCart()
         {
             await Shell.Current.GoToAsync(nameof(CartPage));
+        }
+
+        [RelayCommand]
+        async Task AddToCart(int gameID)
+        {
+            await _cartService.AddGameToCart(gameID);
         }
 
 

@@ -6,30 +6,52 @@
              xmlns:viewmodel="clr-namespace:Stiem.ViewModel"
              x:DataType="viewmodel:LoginViewModel">
 
-    <Grid ColumnDefinitions="*, 100, 150, *"
-          RowDefinitions="*, 100, 100, 100, *"
-          BackgroundColor="Black">
+    <Grid ColumnDefinitions="*, 100, 250, *"
+          RowDefinitions="*, 50, 50, 50, *"
+          BackgroundColor="Black"
+          RowSpacing="25">
         
         <Label Grid.Row="1"
                Grid.Column="1"
-               Text="Username"/>
+               VerticalTextAlignment="Center"
+               Text="Username:"/>
         
         <Entry Grid.Row="1"
                Grid.Column="2"/>
         
         <Label Grid.Row="2"
                Grid.Column="1"
-               Text ="Password"/>
+               VerticalTextAlignment="Center"
+               Text ="Password:"/>
         
         <Entry Grid.Row="2"
                Grid.Column="2"
                IsPassword="True"/>
 
-        <Button Text="Login"
+        <HorizontalStackLayout Grid.Row="3"
+                               Grid.Column="2"
+                               Grid.ColumnSpan="2"
+                               Spacing="50">
+
+            <Button Text="Register"
+                Command="{Binding GoToMainCommand}"
+                MinimumWidthRequest="100"/>
+
+            <Button Text="Login"
+                Command="{Binding LoginCommand}"
+                MinimumWidthRequest="100"/>
+
+        </HorizontalStackLayout>
+
+        <!--<Button Text="Register"
                 Grid.Row="3"
                 Grid.Column="1"
-                Grid.ColumnSpan="2"
                 Command="{Binding GoToMainCommand}"/>
+
+        <Button Text="Login"
+                Grid.Row="3"
+                Grid.Column="2"
+                Command="{Binding GoToMainCommand}"/>-->
 
     </Grid>
     

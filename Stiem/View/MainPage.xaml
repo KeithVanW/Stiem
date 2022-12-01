@@ -8,30 +8,40 @@
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
              ios:Page.UseSafeArea="True"
              x:DataType="viewmodel:GamesViewModel" MaximumHeightRequest="900" MaximumWidthRequest="450">
+    
+    <!--Styles-->
+
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="TextColor" Value="AntiqueWhite" />
+        </Style>
+    </ContentPage.Resources>
 
     <!--Header-->
 
     <Grid ColumnDefinitions="64, *, 64"
           RowDefinitions="64, 64, 64, *, 64"
-          BackgroundColor="LightGrey">
+          BackgroundColor="Black"
+          ColumnSpacing="10">
 
-        <Button Text="home"
-                Grid.Column="0"
-                BackgroundColor="Red"
-                VerticalOptions="Center"
-                HorizontalOptions="Center"
-                Command="{Binding GoToHomeCommand}"/>
+        <Image Grid.Column="0"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"
+               WidthRequest="48"
+               HeightRequest="48"
+               Source="stiemlogoorange.png"/>
 
         <Label Grid.Column="1"
                FontSize="36"
-               HorizontalTextAlignment="Center"
-               TextColor="Black">
+               FontFamily="Wind"
+               VerticalTextAlignment="Center"
+               HorizontalTextAlignment="Center">
             STIEM!
         </Label>
 
         <Button Text="Cart"
                 Grid.Column="2"
-                BackgroundColor="Blue"
                 VerticalOptions="Center"
                 HorizontalOptions="Center"
                 Command="{Binding GoToCartCommand}"/>
@@ -40,27 +50,22 @@
                Grid.Row="1"
                Grid.ColumnSpan="3"
                FontSize="24"
-               HorizontalTextAlignment="Start"
-               TextColor="Black">
-            Search
+               VerticalTextAlignment="Center">
+            Search:
         </Label>
-        
+
         <Entry Grid.Row="1"
                Grid.Column="1"
                Grid.ColumnSpan="2"
                Margin="15"
-               BackgroundColor="Black">
-            
+               TextColor="AntiqueWhite">
+
         </Entry>
-        
-        
 
         <Label Grid.Column="0"
                Grid.Row="2"
                Grid.ColumnSpan="3"
-               FontSize="24"
-               HorizontalTextAlignment="Start"
-               TextColor="Black">
+               FontSize="24">
             Filter
         </Label>
 
@@ -68,7 +73,6 @@
 
         <CollectionView
                 ItemsSource="{Binding Games}"
-                SelectionMode="None"
                 Grid.Row="3"
                 Grid.Column="0"
                 Grid.ColumnSpan="3">
@@ -77,7 +81,7 @@
                 <DataTemplate x:DataType="model:Game">
                     <Grid Padding="10" ColumnDefinitions="125,*">
                         <Image
-                            BackgroundColor="ForestGreen"
+                            BackgroundColor="DarkSlateGrey"
                                         Aspect="AspectFill"
                                         HeightRequest="175"
                                         Source="{Binding ImageURL}"
@@ -89,40 +93,44 @@
                             <Label 
                                 Style="{StaticResource MicroLabel}" 
                                 Text="{Binding Developer}"
-                                TextColor="Black" />
+                                TextColor="AntiqueWhite"/>
                             
                             <Label 
                                 Style="{StaticResource MediumLabel}" 
                                 Text="{Binding Name}"
-                                TextColor="Black" />
-
+                                TextColor="AntiqueWhite" />
+                            
                             <Label 
                                 Style="{StaticResource MicroLabel}" 
                                 Text="{Binding Description}"
-                                TextColor="Black" />
-
+                                TextColor="AntiqueWhite" />
+                            
                             <Label 
                                 Style="{StaticResource MicroLabel}" 
                                 Text="{Binding Genre}"
-                                TextColor="Black" />
-
+                                TextColor="AntiqueWhite" />
+                            
                             <Label 
                                 Style="{StaticResource MicroLabel}" 
                                 Text="{Binding Platform}"
-                                TextColor="Black" />
-
+                                TextColor="AntiqueWhite" />
+                            
                             <Label 
                                 Style="{StaticResource MediumLabel}" 
                                 Text="{Binding Price}"
-                                TextColor="Black" />
+                                TextColor="AntiqueWhite"/>
 
                             <Button Grid.Column="1"
+                                x:Name="addToCartButton"
                                 FontSize="12"
                                 Text="Add to Cart"
-                                TextColor="Black"
-                                BackgroundColor="ForestGreen"
-                                Padding="5" />
-                            
+                                TextColor="AntiqueWhite"
+                                Padding="5"
+                                Command="{Binding Source={RelativeSource 
+                                AncestorType={x:Type viewmodel:GamesViewModel}},
+                                Path= AddToCartCommand}"
+                                CommandParameter="{Binding GameID}"
+                                />
 
                         </VerticalStackLayout>
                     </Grid>
