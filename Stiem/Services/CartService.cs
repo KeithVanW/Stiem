@@ -67,16 +67,16 @@ namespace Stiem.Services
 
         }
 
-        public Task ClearCart()
+        public async Task ClearCart()
         {
-            string url = "https://localhost:5000/api/Cart/";
+            string url = "https://localhost:5000/api/Cart";
 
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new
                 System.Net.Http.Headers.AuthenticationHeaderValue(
                 "Bearer", _userService.JsonWebToken);
 
-            HttpResponseMessage response = client.DeleteAsync(url + gameID).Result;
+            HttpResponseMessage response = client.DeleteAsync(url).Result;
         }
     }
 }
