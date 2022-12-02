@@ -13,7 +13,7 @@ namespace Stiem.Services
             _userService = userService;
         }
 
-        public async Task<ICollection<Game>> GetGamesInCartAsync()
+        public async Task<CartOverview> GetGamesInCartAsync()
         {
             string url = "https://localhost:5000/api/Cart";
 
@@ -27,7 +27,7 @@ namespace Stiem.Services
             if (response.IsSuccessStatusCode)
             {
                 string json = await response.Content.ReadAsStringAsync();
-                var result = JsonConvert.DeserializeObject<ICollection<Game>>(json);
+                var result = JsonConvert.DeserializeObject<CartOverview>(json);
                 return result;
             }
             return null;
@@ -48,6 +48,8 @@ namespace Stiem.Services
 
             HttpResponseMessage response = client.PostAsync(url, content).Result;
 
+            await GetGamesInCartAsync();
+
             // if badrequest check -> already in DB
 
         }
@@ -63,6 +65,18 @@ namespace Stiem.Services
 
             HttpResponseMessage response = client.DeleteAsync(url+gameID).Result;
 
+        }
+
+        public async Task ClearCart()
+        {
+            string url = "https://localhost:5000/api/Cart";
+
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.Authorization = new
+                System.Net.Http.Headers.AuthenticationHeaderValue(
+                "Bearer", _userService.JsonWebToken);
+
+            HttpResponseMessage response = client.DeleteAsync(url).Result;
         }
     }
 }
