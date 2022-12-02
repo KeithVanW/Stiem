@@ -6,6 +6,10 @@ namespace Stiem.ViewModel
     public partial class CartViewModel : BaseViewModel
     {
         public ObservableCollection<Game> CartGames { get; } = new();
+
+        [ObservableProperty]
+        private double totalPrice;
+
         CartService _cartService;
         public CartViewModel(CartService cartService)
         {
@@ -14,10 +18,13 @@ namespace Stiem.ViewModel
             _ = GetGamesAsync();
         }
 
-        [RelayCommand]
         async Task GetGamesAsync()
         {
-            ICollection<Game> games = await _cartService.GetGamesInCartAsync();
+            CartOverview cart = await _cartService.GetGamesInCartAsync();
+            IEnumerable<Game> games = cart.Games;
+            TotalPrice= cart.TotalPrice;
+
+            CartGames.Clear();
 
             foreach (var game in games)
             {
@@ -28,9 +35,14 @@ namespace Stiem.ViewModel
         async Task RemoveFromCart(int gameID)
         {
             await _cartService.RemoveFromCart(gameID);
-            CartGames.Remove(new Game { GameID = gameID });
+            await GetGamesAsync();
+        }
 
-            // Remove from observable collection
+        [RelayCommand]
+        async Task ClearCart()
+        {
+            await _cartService.ClearCart();
+            await GetGamesAsync();
         }
     }
 }
