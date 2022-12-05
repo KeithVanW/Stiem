@@ -17,13 +17,13 @@ namespace Stiem.ViewModel
         }
 
         [RelayCommand]
-        async Task GoToMain()
+        private async Task GoToMain()
         {
             await Shell.Current.GoToAsync(nameof(MainPage));
         }
 
         [RelayCommand]
-        async Task Login()
+        private async Task Login()
         {
             if (await _userService.Login())
             {
@@ -34,7 +34,5 @@ namespace Stiem.ViewModel
                 ErrorMessage = "Login Failed!";
             }
         }
-
-        
     }
 }

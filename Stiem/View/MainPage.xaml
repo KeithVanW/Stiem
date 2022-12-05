@@ -7,10 +7,10 @@
              Title="Games"
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
              ios:Page.UseSafeArea="True"
-             x:DataType="viewmodel:GamesViewModel" 
-             MaximumHeightRequest="800" 
+             x:DataType="viewmodel:GamesViewModel"
+             MaximumHeightRequest="800"
              MaximumWidthRequest="450">
-    
+
     <!--Styles-->
 
     <ContentPage.Resources>
@@ -33,7 +33,7 @@
                HorizontalOptions="Center"
                WidthRequest="48"
                HeightRequest="48"
-               Source="stiemlogoorange.png"/>
+               Source="stiemlogoorange.png" />
 
         <Label Grid.Column="1"
                FontSize="36"
@@ -44,43 +44,45 @@
         </Label>
 
         <ImageButton Source="shoppingcart.png"
-                HeightRequest="48"
-                WidthRequest="48"
+                HeightRequest="36"
+                WidthRequest="36"
                 Command="{Binding GoToCartCommand}"
                 Grid.Column="2"
                 VerticalOptions="Center"
                 HorizontalOptions="Center"
-                     BackgroundColor="Transparent"/>
+                BackgroundColor="Transparent" />
 
         <!--<Button Text="Cart"
                 Grid.Column="2"
                 VerticalOptions="Center"
                 HorizontalOptions="Center"
-                Command="{Binding GoToCartCommand}"/>-->
+                Command="{Binding GoToCartCommand}" />-->
 
         <VerticalStackLayout
             Grid.Row="1"
             Grid.ColumnSpan="3">
 
-        <Entry Grid.Row="1"
+            <Entry
+               Grid.Row="1"
                Grid.Column="1"
                Grid.ColumnSpan="2"
                TextColor="AntiqueWhite"
                Placeholder="Search by name..."
                VerticalOptions="Center"
-               VerticalTextAlignment="Center">
-        </Entry>
+               VerticalTextAlignment="Center"
+               Text="{Binding NameParam}">
+            </Entry>
 
-        <Entry Grid.Row="1"
+            <Entry Grid.Row="1"
                Grid.Column="1"
                Grid.ColumnSpan="2"
                Margin="0, 5"
                TextColor="AntiqueWhite"
                Placeholder="Search by genre..."
                VerticalOptions="Center"
-               VerticalTextAlignment="Center">
-        </Entry>
-
+               VerticalTextAlignment="Center"
+               Text="{Binding GenreParam}">
+            </Entry>
         </VerticalStackLayout>
 
         <!--Body-->
@@ -103,35 +105,35 @@
                                         Grid.Column="1"
                                         Padding="10">
 
-                            <Label 
-                                Style="{StaticResource MicroLabel}" 
+                            <Label
+                                Style="{StaticResource MicroLabel}"
                                 Text="{Binding Developer}"
-                                TextColor="AntiqueWhite"/>
-                            
-                            <Label 
-                                Style="{StaticResource MediumLabel}" 
+                                TextColor="AntiqueWhite" />
+
+                            <Label
+                                Style="{StaticResource MediumLabel}"
                                 Text="{Binding Name}"
                                 TextColor="AntiqueWhite" />
-                            
-                            <Label 
-                                Style="{StaticResource MicroLabel}" 
+
+                            <Label
+                                Style="{StaticResource MicroLabel}"
                                 Text="{Binding Description}"
                                 TextColor="AntiqueWhite" />
-                            
-                            <Label 
-                                Style="{StaticResource MicroLabel}" 
+
+                            <Label
+                                Style="{StaticResource MicroLabel}"
                                 Text="{Binding Genre}"
                                 TextColor="AntiqueWhite" />
-                            
-                            <Label 
-                                Style="{StaticResource MicroLabel}" 
+
+                            <Label
+                                Style="{StaticResource MicroLabel}"
                                 Text="{Binding Platform}"
                                 TextColor="AntiqueWhite" />
-                            
-                            <Label 
-                                Style="{StaticResource MicroLabel}" 
+
+                            <Label
+                                Style="{StaticResource MicroLabel}"
                                 TextColor="AntiqueWhite"
-                                Text="{Binding Price, StringFormat='EUR: {0}'}"/>
+                                Text="{Binding Price, StringFormat='EUR: {0}'}" />
 
                             <Button Grid.Column="1"
                                 x:Name="addToCartButton"
@@ -139,12 +141,10 @@
                                 Text="Add to Cart"
                                 TextColor="AntiqueWhite"
                                 Padding="5"
-                                Command="{Binding Source={RelativeSource 
+                                Command="{Binding Source={RelativeSource
                                 AncestorType={x:Type viewmodel:GamesViewModel}},
                                 Path= AddToCartCommand}"
-                                CommandParameter="{Binding GameID}"
-                                />
-
+                                CommandParameter="{Binding GameID}" />
                         </VerticalStackLayout>
                     </Grid>
                 </DataTemplate>
@@ -152,6 +152,5 @@
         </CollectionView>
 
         <!--Footer-->
-        
     </Grid>
 </ContentPage>

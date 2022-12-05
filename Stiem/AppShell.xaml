@@ -28,6 +28,5 @@
     <ShellContent
         Title="Games"
         ContentTemplate="{DataTemplate view:LoginPage}"
-        Route="LoginPage"/>
-
+        Route="LoginPage" />
 </Shell>

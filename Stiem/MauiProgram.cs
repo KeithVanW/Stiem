@@ -5,24 +5,23 @@ namespace Stiem;
 
 public static class MauiProgram
 {
-	public static MauiApp CreateMauiApp()
-	{
-		var builder = MauiApp.CreateBuilder();
-		builder
-			.UseMauiApp<App>()
-			.ConfigureFonts(fonts =>
-			{
-				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-
+    public static MauiApp CreateMauiApp()
+    {
+        var builder = MauiApp.CreateBuilder();
+        builder
+            .UseMauiApp<App>()
+            .ConfigureFonts(fonts =>
+            {
+                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
 
         builder.Services.AddSingleton<GameService>();
-		builder.Services.AddSingleton<CartService>();
+        builder.Services.AddSingleton<CartService>();
         builder.Services.AddSingleton<UserService>();
 
         builder.Services.AddSingleton<GamesViewModel>();
-		builder.Services.AddTransient<CartViewModel>();
+        builder.Services.AddTransient<CartViewModel>();
         builder.Services.AddSingleton<LoginViewModel>();
 
         builder.Services.AddSingleton<MainPage>();
@@ -30,7 +29,6 @@ public static class MauiProgram
         builder.Services.AddTransient<CartPage>();
         builder.Services.AddSingleton<LoginPage>();
 
-
         return builder.Build();
-	}
+    }
 }

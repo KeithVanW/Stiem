@@ -5,7 +5,7 @@
              Title="Login"
              xmlns:viewmodel="clr-namespace:Stiem.ViewModel"
              x:DataType="viewmodel:LoginViewModel"
-             MaximumHeightRequest="800" 
+             MaximumHeightRequest="800"
              MaximumWidthRequest="450">
 
     <Grid ColumnDefinitions="50, 350, 50"
@@ -18,18 +18,17 @@
                Grid.Column="1"
                MaximumWidthRequest="100"
                MaximumHeightRequest="100"
-               HorizontalOptions="Center"/>
+               HorizontalOptions="Center" />
 
         <Entry Grid.Row="1"
                Grid.Column="1"
                Placeholder="Enter username..."
-               VerticalTextAlignment="Center"/>
-       
-        
+               VerticalTextAlignment="Center" />
+
         <Entry Grid.Row="2"
                Grid.Column="1"
                IsPassword="True"
-               Placeholder="Enter password..."/>
+               Placeholder="Enter password..." />
 
         <HorizontalStackLayout Grid.Row="3"
                                Grid.Column="1"
@@ -38,14 +37,13 @@
             <Button Text="Register"
                 Command="{Binding GoToMainCommand}"
                 MinimumWidthRequest="100"
-                                    Scale="0.95"/>
+                                    Scale="0.95" />
 
             <Button x:Name= "loginButton"
                 Text="Login"
                 Command="{Binding LoginCommand}"
                 MinimumWidthRequest="100"
-                Scale="0.95"
-                />
+                Scale="0.95" />
         </HorizontalStackLayout>
 
         <Label Grid.Row ="4"
@@ -53,8 +51,6 @@
                HorizontalOptions="Center"
                    x:Name="loginResponse"
                    Text="{Binding ErrorMessage}"
-                   TextColor="Red"/>
-
+                   TextColor="Red" />
     </Grid>
-    
 </ContentPage>

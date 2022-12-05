@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Stiem.Model
+﻿namespace Stiem.Model
 {
     public class User
     {

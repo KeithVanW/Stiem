@@ -10,7 +10,8 @@ namespace Stiem.ViewModel
         [ObservableProperty]
         private double totalPrice;
 
-        CartService _cartService;
+        private CartService _cartService;
+
         public CartViewModel(CartService cartService)
         {
             Title = "Cart";
@@ -18,11 +19,11 @@ namespace Stiem.ViewModel
             _ = GetGamesAsync();
         }
 
-        async Task GetGamesAsync()
+        private async Task GetGamesAsync()
         {
             CartOverview cart = await _cartService.GetGamesInCartAsync();
             IEnumerable<Game> games = cart.Games;
-            TotalPrice= cart.TotalPrice;
+            TotalPrice = cart.TotalPrice;
 
             CartGames.Clear();
 
@@ -31,15 +32,16 @@ namespace Stiem.ViewModel
                 CartGames.Add(game);
             }
         }
+
         [RelayCommand]
-        async Task RemoveFromCart(int gameID)
+        private async Task RemoveFromCart(int gameID)
         {
             await _cartService.RemoveFromCart(gameID);
             await GetGamesAsync();
         }
 
         [RelayCommand]
-        async Task ClearCart()
+        private async Task ClearCart()
         {
             await _cartService.ClearCart();
             await GetGamesAsync();
