@@ -23,7 +23,7 @@
     <!--Header-->
 
     <Grid ColumnDefinitions="64, *, 64"
-          RowDefinitions="64, 64, 48, *, 32"
+          RowDefinitions="64, 64, 24, 4, *, 4, 32"
           BackgroundColor="Black"
           ColumnSpacing="5"
           Padding="10">
@@ -51,12 +51,6 @@
                 VerticalOptions="Center"
                 HorizontalOptions="Center"
                 BackgroundColor="Transparent" />
-
-        <!--<Button Text="Cart"
-                Grid.Column="2"
-                VerticalOptions="Center"
-                HorizontalOptions="Center"
-                Command="{Binding GoToCartCommand}" />-->
 
         <VerticalStackLayout
             Grid.Row="1"
@@ -87,9 +81,14 @@
 
         <!--Body-->
 
+        <Label BackgroundColor="Orange"
+               Grid.Row="3"
+               Grid.Column="0"
+               Grid.ColumnSpan="3"/>
+
         <CollectionView
                 ItemsSource="{Binding Games}"
-                Grid.Row="3"
+                Grid.Row="4"
                 Grid.Column="0"
                 Grid.ColumnSpan="3">
 
@@ -150,6 +149,11 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+
+        <Label BackgroundColor="Orange"
+               Grid.Row="5"
+               Grid.Column="0"
+               Grid.ColumnSpan="3"/>
 
         <!--Footer-->
     </Grid>

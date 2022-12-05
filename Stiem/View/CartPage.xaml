@@ -104,19 +104,32 @@
                                HorizontalOptions="Center"
                                VerticalOptions="Center">
 
+
+            <Button x:Name="BuyCartButton"
+                FontSize="12"
+                Text="Buy"
+                TextColor="AntiqueWhite"
+                VerticalOptions="Center"
+                BackgroundColor="DarkGreen"
+                MinimumWidthRequest="100"
+                IsVisible="{Binding BuyCartVisibility}"
+                Padding="5"/>
+
             <Label FontSize="18"
                Text="{Binding TotalPrice, StringFormat='EUR: {0}'}"
                HorizontalTextAlignment="Center"
-                   VerticalOptions="Center"
-                   Padding="25, 0" />
+               VerticalOptions="Center"
+               Padding="25, 0" />
 
-            <Button x:Name="ClearCart"
+            <Button x:Name="ClearCartButton"
                 FontSize="12"
                 Text="Clear Cart"
                 TextColor="AntiqueWhite"
                 VerticalOptions="Center"
                 BackgroundColor="DarkRed"
                 Padding="5"
+                MinimumWidthRequest="100"
+                IsVisible="{Binding ClearCartVisibility}"
                 Command="{Binding ClearCartCommand}" />
         </HorizontalStackLayout>
     </Grid>
