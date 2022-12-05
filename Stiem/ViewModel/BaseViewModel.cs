@@ -3,6 +3,6 @@
     public partial class BaseViewModel : ObservableObject
     {
         [ObservableProperty]
-        string title;
+        private string title;
     }
 }

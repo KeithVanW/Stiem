@@ -1,12 +1,10 @@
 ﻿using Newtonsoft.Json;
-
 using System.Net.Http.Json;
 
 namespace Stiem.Services
 {
     public class GameService
     {
-
         public async Task<ICollection<Game>> GetAllGames()
         {
             string url = "https://localhost:5000/api/Game";
@@ -21,6 +19,8 @@ namespace Stiem.Services
             }
             return null;
         }
+
+        // api/search
 
         public async Task AddGame()
         {
@@ -40,7 +40,36 @@ namespace Stiem.Services
 
             HttpClient client = new HttpClient();
             var response = await client.PostAsJsonAsync(url, game);
-            
+        }
+
+        public async Task<ICollection<Game>> SearchByName(string nameParam)
+        {
+            string url = "https://localhost:5000/api/Game/search/" + nameParam;
+
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response = client.GetAsync(url).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                string json = await response.Content.ReadAsStringAsync();
+                var result = JsonConvert.DeserializeObject<ICollection<Game>>(json);
+                return result;
+            }
+            return null;
+        }
+
+        public async Task<ICollection<Game>> SearchByGenre(string genreParam)
+        {
+            string url = "https://localhost:5000/api/Game/genre/" + genreParam;
+
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response = client.GetAsync(url).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                string json = await response.Content.ReadAsStringAsync();
+                var result = JsonConvert.DeserializeObject<ICollection<Game>>(json);
+                return result;
+            }
+            return null;
         }
     }
 }

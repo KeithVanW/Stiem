@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using System.Text;
-using static System.Net.WebRequestMethods;
 
 namespace Stiem.Services
 {
@@ -38,9 +37,9 @@ namespace Stiem.Services
             string url = "https://localhost:5000/api/Cart";
 
             HttpClient client = new HttpClient();
-                client.DefaultRequestHeaders.Authorization = new
-                System.Net.Http.Headers.AuthenticationHeaderValue(
-                "Bearer", _userService.JsonWebToken);
+            client.DefaultRequestHeaders.Authorization = new
+            System.Net.Http.Headers.AuthenticationHeaderValue(
+            "Bearer", _userService.JsonWebToken);
 
             StringContent content = new StringContent(
                 JsonConvert.SerializeObject(gameID),
@@ -51,7 +50,6 @@ namespace Stiem.Services
             await GetGamesInCartAsync();
 
             // if badrequest check -> already in DB
-
         }
 
         public async Task RemoveFromCart(int gameID)
@@ -63,8 +61,7 @@ namespace Stiem.Services
                 System.Net.Http.Headers.AuthenticationHeaderValue(
                 "Bearer", _userService.JsonWebToken);
 
-            HttpResponseMessage response = client.DeleteAsync(url+gameID).Result;
-
+            HttpResponseMessage response = client.DeleteAsync(url + gameID).Result;
         }
 
         public async Task ClearCart()
