@@ -7,6 +7,9 @@ namespace Stiem.ViewModel
     {
         private readonly UserService _userService;
 
+        [ObservableProperty]
+        private string errorMessage = "";
+
         public LoginViewModel(UserService userService)
         {
             Title = "Login";
@@ -22,8 +25,16 @@ namespace Stiem.ViewModel
         [RelayCommand]
         async Task Login()
         {
-            await _userService.Login();
-            await Shell.Current.GoToAsync(nameof(MainPage));
+            if (await _userService.Login())
+            {
+                await Shell.Current.GoToAsync(nameof(MainPage));
+            }
+            else
+            {
+                ErrorMessage = "Login Failed!";
+            }
         }
+
+        
     }
 }

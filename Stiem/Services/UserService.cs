@@ -14,7 +14,7 @@ namespace Stiem.Services
             Password = "String@123"
         };
 
-        public async Task Login()
+        public async Task<bool> Login()
         {
             string url = "https://localhost:5000/api/Auth/login";
             StringContent content = new StringContent(
@@ -22,10 +22,25 @@ namespace Stiem.Services
                 Encoding.UTF8, "application/json");
 
             HttpClient client = new HttpClient();
-            HttpResponseMessage response = await client.PostAsync(url, content);
-            string token = await response.Content.ReadAsStringAsync();
-            LoginResponse loginResponse = JsonConvert.DeserializeObject<LoginResponse>(token);
-            JsonWebToken = loginResponse.Token;
+
+            try
+            {
+                HttpResponseMessage response = await client.PostAsync(url, content);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return false;
+                }
+
+                string token = await response.Content.ReadAsStringAsync();
+                LoginResponse loginResponse = JsonConvert.DeserializeObject<LoginResponse>(token);
+                JsonWebToken = loginResponse.Token;
+            }
+            catch (HttpRequestException ex)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

@@ -22,6 +22,8 @@ namespace Stiem.Services
             return null;
         }
 
+        // api/search
+
         public async Task AddGame()
         {
             string url = "https://localhost:5000/api/Game";

@@ -5,92 +5,118 @@
              Title="Cart"
              xmlns:model="clr-namespace:Stiem.Model"
              xmlns:viewmodel="clr-namespace:Stiem.ViewModel"
-             x:DataType="viewmodel:CartViewModel">
+             x:DataType="viewmodel:CartViewModel"
+             MaximumHeightRequest="800" 
+             MaximumWidthRequest="450">
 
-    <Grid ColumnDefinitions="64, *, 64"
-          RowDefinitions="64, 48, *, 48, 64"
+    <Grid ColumnDefinitions="15, *, 15"
+          RowDefinitions="auto, 12, 2, *, 2, 2, 64"
           BackgroundColor="Black">
 
-        <Label Text="Cart Overview"
+        <HorizontalStackLayout
                Grid.Column="1"
-               Grid.Row="1"
+               Grid.Row="0"
+               HorizontalOptions="CenterAndExpand"
+            Padding="16">
+            
+            <Image Source="shoppingcart.png"
+                   HeightRequest="48"
+                   WidthRequest="48"/>
+            
+            <Label Text="Cart Overview"
                HorizontalOptions="Center"
-               FontSize="36" />
+               VerticalOptions="Center"
+               FontSize="24"
+               Padding="25, 0"/>
+
+        </HorizontalStackLayout>
+
+        <Label 
+            BackgroundColor="Orange"
+            Grid.Row="2"
+            Grid.Column="1"/>
 
         <CollectionView
                ItemsSource="{Binding CartGames}"
-               Grid.Row="2"
+               Grid.Row="3"
                Grid.Column="1"
                VerticalOptions="Start">
 
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:Game">
 
-                    <Grid Padding="10"
-                          Grid.Column="1"
-                          Grid.Row="1"
-                          ColumnDefinitions="50, *, *">
+                    <Grid 
+                        Padding="12"
+                          Grid.Column="0"
+                          ColumnDefinitions="10, *, 5*, *, *, *, 10">
 
                         <Image
-                            BackgroundColor="DarkSlateGrey"
                             MaximumHeightRequest="50"
                             MaximumWidthRequest="50"
                             Source="{Binding ImageURL}"
-                            Grid.Column="1" />
+                            Grid.Column="1"
+                            HorizontalOptions="Start"
+                            />
 
-                        <HorizontalStackLayout
-                                 Grid.Column="2"
-                                 Padding="10"
-                                 Spacing="25">
-
-                            <Label
-                                Grid.Column="2"
-                                Style="{StaticResource MediumLabel}"
+                        <Label
+                                Style="{StaticResource MicroLabel}"
                                 Text="{Binding Name}"
-                                TextColor="AntiqueWhite" />
+                                TextColor="AntiqueWhite"
+                               HorizontalOptions="Start"
+                               Grid.Column="2"
+                            Padding="8, 0"/>
 
                             <Label
-                                Grid.Column="3"
                                 Style="{StaticResource MicroLabel}"
                                 Text="{Binding Platform}"
-                                TextColor="AntiqueWhite" />
+                                TextColor="AntiqueWhite"
+                                                            Grid.Column="3"/>
 
                             <Label
-                                Grid.Column="4"
-                                Style="{StaticResource MediumLabel}"
+                                Style="{StaticResource MicroLabel}"
                                 Text="{Binding Price}"
-                                TextColor="AntiqueWhite" />
+                                TextColor="AntiqueWhite"
+                                                            Grid.Column="4"/>
 
-                            <Button Grid.Column="1"
+                            <Button 
                                 x:Name="Remove"
                                 FontSize="12"
-                                Text="Remove"
+                                Text="X"
                                 TextColor="AntiqueWhite"
                                 BackgroundColor="DarkRed"
                                 Padding="5"
                                 Command="{Binding Source={RelativeSource
                                 AncestorType={x:Type viewmodel:CartViewModel}},
                                 Path= RemoveFromCartCommand}"
-                                CommandParameter="{Binding GameID}" />
-                        </HorizontalStackLayout>
+                                CommandParameter="{Binding GameID}"
+                                HorizontalOptions="End"
+                                                                Grid.Column="5"/>
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
 
-        <HorizontalStackLayout Grid.Row="3"
-                               Grid.Column="1"
-                               HorizontalOptions="Center">
+        <Label 
+            BackgroundColor="Orange"
+            Grid.Row="4"
+            Grid.Column="1"/>
 
-            <Label FontSize="36"
-               Text="{Binding TotalPrice}"
-               HorizontalTextAlignment="Center" />
+        <HorizontalStackLayout Grid.Row="6"
+                               Grid.Column="1"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center">
+
+            <Label FontSize="18"
+               Text="{Binding TotalPrice, StringFormat='EUR: {0}'}"
+               HorizontalTextAlignment="Center"
+                   VerticalOptions="Center"
+                   Padding="25, 0"/>
 
             <Button x:Name="ClearCart"
                 FontSize="12"
                 Text="Clear Cart"
                 TextColor="AntiqueWhite"
-                    VerticalOptions="Center"
+                VerticalOptions="Center"
                 BackgroundColor="DarkRed"
                 Padding="5"
                 Command="{Binding ClearCartCommand}" />

@@ -49,6 +49,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\shoppingcart.png" />
 	  <None Remove="Resources\Images\stiemlogored.png" />
 	</ItemGroup>
 
@@ -65,9 +66,6 @@
 
 	<ItemGroup>
 	  <MauiXaml Update="View\CartPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="View\DetailsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\LoginPage.xaml">

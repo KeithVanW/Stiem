@@ -22,7 +22,6 @@ public static class MauiProgram
         builder.Services.AddSingleton<UserService>();
 
         builder.Services.AddSingleton<GamesViewModel>();
-        builder.Services.AddSingleton<GameDetailsViewModel>();
 		builder.Services.AddTransient<CartViewModel>();
         builder.Services.AddSingleton<LoginViewModel>();
 

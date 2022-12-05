@@ -4,54 +4,56 @@
              x:Class="Stiem.View.LoginPage"
              Title="Login"
              xmlns:viewmodel="clr-namespace:Stiem.ViewModel"
-             x:DataType="viewmodel:LoginViewModel">
+             x:DataType="viewmodel:LoginViewModel"
+             MaximumHeightRequest="800" 
+             MaximumWidthRequest="450">
 
-    <Grid ColumnDefinitions="*, 100, 250, *"
-          RowDefinitions="*, 50, 50, 50, *"
+    <Grid ColumnDefinitions="50, 350, 50"
+          RowDefinitions="*, 50, 50, 50, 50, *"
           BackgroundColor="Black"
           RowSpacing="25">
-        
-        <Label Grid.Row="1"
+
+        <Image Source="user.png"
+               Grid.Row="0"
                Grid.Column="1"
-               VerticalTextAlignment="Center"
-               Text="Username:"/>
-        
+               MaximumWidthRequest="100"
+               MaximumHeightRequest="100"
+               HorizontalOptions="Center"/>
+
         <Entry Grid.Row="1"
-               Grid.Column="2"/>
-        
-        <Label Grid.Row="2"
                Grid.Column="1"
-               VerticalTextAlignment="Center"
-               Text ="Password:"/>
+               Placeholder="Enter username..."
+               VerticalTextAlignment="Center"/>
+       
         
         <Entry Grid.Row="2"
-               Grid.Column="2"
-               IsPassword="True"/>
+               Grid.Column="1"
+               IsPassword="True"
+               Placeholder="Enter password..."/>
 
         <HorizontalStackLayout Grid.Row="3"
-                               Grid.Column="2"
-                               Grid.ColumnSpan="2"
-                               Spacing="50">
+                               Grid.Column="1"
+                               HorizontalOptions="Center">
 
             <Button Text="Register"
                 Command="{Binding GoToMainCommand}"
-                MinimumWidthRequest="100"/>
+                MinimumWidthRequest="100"
+                                    Scale="0.95"/>
 
-            <Button Text="Login"
+            <Button x:Name= "loginButton"
+                Text="Login"
                 Command="{Binding LoginCommand}"
-                MinimumWidthRequest="100"/>
-
+                MinimumWidthRequest="100"
+                Scale="0.95"
+                />
         </HorizontalStackLayout>
 
-        <!--<Button Text="Register"
-                Grid.Row="3"
-                Grid.Column="1"
-                Command="{Binding GoToMainCommand}"/>
-
-        <Button Text="Login"
-                Grid.Row="3"
-                Grid.Column="2"
-                Command="{Binding GoToMainCommand}"/>-->
+        <Label Grid.Row ="4"
+                   Grid.Column="1"
+               HorizontalOptions="Center"
+                   x:Name="loginResponse"
+                   Text="{Binding ErrorMessage}"
+                   TextColor="Red"/>
 
     </Grid>
     
