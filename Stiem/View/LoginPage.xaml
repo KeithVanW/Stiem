@@ -21,61 +21,55 @@
                MaximumHeightRequest="100"
                HorizontalOptions="Center" />
 
-
         <VerticalStackLayout
             Grid.Row="1"
             Grid.Column="1">
-            
-            <Entry 
+
+            <Entry
                Placeholder="Enter username..."
                VerticalTextAlignment="Center"
                HeightRequest="48"
-               Text="{Binding LoginUser.Username}"/>
+               Text="{Binding LoginUser.Username}" />
 
             <Label
                 Margin="10"
                 Text="Invalid username"
                 TextColor="Red"
                 FontSize="12"
-                IsVisible= "true"/>
-
+                IsVisible= "false" />
         </VerticalStackLayout>
 
         <VerticalStackLayout
             Grid.Row="2"
             Grid.Column="1">
 
-            <Entry 
+            <Entry
                IsPassword="True"
                Placeholder="Enter password..."
-               HeightRequest="48" 
-               Text="{Binding LoginUser.Password}"/>
+               HeightRequest="48"
+               Text="{Binding LoginUser.Password}" />
 
             <Label
                 Margin="10"
                 Text="Invalid password"
                 TextColor="Red"
                 FontSize="12"
-                IsVisible= "true"/>
-
+                IsVisible= "false" />
         </VerticalStackLayout>
 
-
         <HorizontalStackLayout Grid.Row="3"
-                               Grid.Column="1"
-                               HorizontalOptions="Center">
+                               Grid.Column="1">
 
             <Button Text="Register"
                 Command="{Binding GoToRegisterCommand}"
-                MinimumWidthRequest="100"
-                Scale="0.95" />
+                HorizontalOptions="Start"
+                MinimumWidthRequest="150" />
 
             <Button x:Name= "loginButton"
                 Text="Login"
                 Command="{Binding LoginCommand}"
-                MinimumWidthRequest="100"
-                Scale="0.95" />
-            
+                Margin="50,0,0,0"
+                MinimumWidthRequest="150" />
         </HorizontalStackLayout>
 
         <Label Grid.Row ="4"

@@ -142,7 +142,8 @@
                 Grid.Column="1"
                 Text="Register"
                 MinimumWidthRequest="100"
-                Scale="0.95" />
+                Scale="0.95"
+            Command="{Binding RegisterCommand}"/>
 
         <Label Grid.Row ="5"
            Grid.Column="1"

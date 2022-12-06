@@ -6,7 +6,7 @@ namespace Stiem.ViewModel
     public partial class RegisterViewModel : BaseViewModel
     {
         [ObservableProperty]
-        private RegisterUser registerUser;
+        private RegisterUser registerUser = new();
 
         private readonly UserService _userService;
 
@@ -21,7 +21,7 @@ namespace Stiem.ViewModel
         [RelayCommand]
         private async Task Register()
         {
-            if (await _userService.Register())
+            if (await _userService.Register(RegisterUser))
             {
                 await Shell.Current.GoToAsync(nameof(MainPage));
             }

@@ -11,7 +11,7 @@ namespace Stiem.ViewModel
         private string errorMessage = "";
 
         [ObservableProperty]
-        public User loginUser;
+        public User loginUser = new();
 
         public LoginViewModel(UserService userService)
         {
@@ -34,7 +34,7 @@ namespace Stiem.ViewModel
         [RelayCommand]
         private async Task Login()
         {
-            if (await _userService.Login())
+            if (await _userService.Login(LoginUser))
             {
                 await Shell.Current.GoToAsync(nameof(MainPage));
             }
