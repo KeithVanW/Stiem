@@ -38,7 +38,8 @@
         
         <Entry Placeholder="Enter emailadress..."
                VerticalTextAlignment="Center"
-               HeightRequest="48">
+               HeightRequest="48"
+               Text="{Binding RegisterUser.Email}">
 
             <Entry.Behaviors>
 
@@ -67,7 +68,8 @@
                Grid.Column="1"
                HeightRequest="48"
                Placeholder="Enter username..."
-               TextColor="Green"/>
+               TextColor="Green"
+               Text="{Binding RegisterUser.Username}"/>
 
         <!-- Password -->
 
@@ -78,7 +80,8 @@
         <Entry IsPassword="True"
                Placeholder="Enter password..."
                x:Name="passwordEntry"
-               HeightRequest="48">
+               HeightRequest="48"
+               Text="{Binding RegisterUser.Password}">
 
             <Entry.Behaviors>
                 <toolkit:MultiValidationBehavior
@@ -119,7 +122,7 @@
 
                 <Label
                     Margin="10"
-                    Text="Minimum 6 characters (1 capital, 1 symbol, 1 digit) "
+                    Text="Minimum 6 characters (1 capital, 1 symbol, 1 digit)"
                     TextColor="DimGrey"
                     FontSize="12"/>
                 

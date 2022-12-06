@@ -10,6 +10,9 @@ namespace Stiem.ViewModel
         [ObservableProperty]
         private string errorMessage = "";
 
+        [ObservableProperty]
+        public User loginUser;
+
         public LoginViewModel(UserService userService)
         {
             Title = "Login";

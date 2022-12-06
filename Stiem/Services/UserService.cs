@@ -42,5 +42,10 @@ namespace Stiem.Services
             }
             return true;
         }
+
+        public Task<bool> Register()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
