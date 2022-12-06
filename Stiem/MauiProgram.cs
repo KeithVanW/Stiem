@@ -1,5 +1,7 @@
 ﻿using Stiem.Services;
 using Stiem.View;
+using CommunityToolkit.Maui;
+
 
 namespace Stiem;
 
@@ -23,11 +25,14 @@ public static class MauiProgram
         builder.Services.AddSingleton<GamesViewModel>();
         builder.Services.AddTransient<CartViewModel>();
         builder.Services.AddSingleton<LoginViewModel>();
+        builder.Services.AddSingleton<RegisterViewModel>();
 
         builder.Services.AddSingleton<MainPage>();
-        //builder.Services.AddTransient<DetailsPage>();
         builder.Services.AddTransient<CartPage>();
         builder.Services.AddSingleton<LoginPage>();
+        builder.Services.AddSingleton<RegisterPage>();
+
+        builder.UseMauiApp<App>().UseMauiCommunityToolkit();
 
         return builder.Build();
     }

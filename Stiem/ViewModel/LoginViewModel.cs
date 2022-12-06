@@ -23,6 +23,12 @@ namespace Stiem.ViewModel
         }
 
         [RelayCommand]
+        private async Task GoToRegister()
+        {
+            await Shell.Current.GoToAsync(nameof(RegisterPage));
+        }
+
+        [RelayCommand]
         private async Task Login()
         {
             if (await _userService.Login())

@@ -35,7 +35,7 @@
                                HorizontalOptions="Center">
 
             <Button Text="Register"
-                Command="{Binding GoToMainCommand}"
+                Command="{Binding GoToRegisterCommand}"
                 MinimumWidthRequest="100"
                 Scale="0.95" />
 
