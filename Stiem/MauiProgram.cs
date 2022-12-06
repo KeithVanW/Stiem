@@ -2,7 +2,6 @@
 using Stiem.View;
 using CommunityToolkit.Maui;
 
-
 namespace Stiem;
 
 public static class MauiProgram

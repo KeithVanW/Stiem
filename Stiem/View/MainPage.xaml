@@ -57,17 +57,21 @@
             Grid.ColumnSpan="3">
 
             <Entry
+               x:Name="searchByNameEntry"
                Grid.Row="1"
                Grid.Column="1"
                Grid.ColumnSpan="2"
                TextColor="AntiqueWhite"
+               
                Placeholder="Search by name..."
                VerticalOptions="Center"
                VerticalTextAlignment="Center"
-               Text="{Binding NameParam}">
-            </Entry>
+               Text="{Binding NameParam}"/>
 
-            <Entry Grid.Row="1"
+
+            <Entry 
+               x:Name="searchByGenreEntry"
+               Grid.Row="1"
                Grid.Column="1"
                Grid.ColumnSpan="2"
                Margin="0, 5"
@@ -75,8 +79,8 @@
                Placeholder="Search by genre..."
                VerticalOptions="Center"
                VerticalTextAlignment="Center"
-               Text="{Binding GenreParam}">
-            </Entry>
+               Text="{Binding GenreParam}"/>
+
         </VerticalStackLayout>
 
         <!--Body-->

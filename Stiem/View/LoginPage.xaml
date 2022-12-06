@@ -3,13 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Stiem.View.LoginPage"
              Title="Login"
+             xmlns:model="clr-namespace:Stiem.Model"
              xmlns:viewmodel="clr-namespace:Stiem.ViewModel"
              x:DataType="viewmodel:LoginViewModel"
              MaximumHeightRequest="800"
              MaximumWidthRequest="450">
 
     <Grid ColumnDefinitions="50, 350, 50"
-          RowDefinitions="*, 48, 48, 48, 50, *"
+          RowDefinitions="200, 80, 80, 48, 50, *"
           BackgroundColor="Black"
           RowSpacing="25">
 
@@ -20,30 +21,55 @@
                MaximumHeightRequest="100"
                HorizontalOptions="Center" />
 
-        <Entry Grid.Row="1"
-               Grid.Column="1"
-               Placeholder="Enter username..."
-               VerticalTextAlignment="Center"/>
+        <VerticalStackLayout
+            Grid.Row="1"
+            Grid.Column="1">
 
-        <Entry Grid.Row="2"
-               Grid.Column="1"
+            <Entry
+               Placeholder="Enter username..."
+               VerticalTextAlignment="Center"
+               HeightRequest="48"
+               Text="{Binding LoginUser.Username}" />
+
+            <Label
+                Margin="10"
+                Text="Invalid username"
+                TextColor="Red"
+                FontSize="12"
+                IsVisible= "false" />
+        </VerticalStackLayout>
+
+        <VerticalStackLayout
+            Grid.Row="2"
+            Grid.Column="1">
+
+            <Entry
                IsPassword="True"
-               Placeholder="Enter password..." />
+               Placeholder="Enter password..."
+               HeightRequest="48"
+               Text="{Binding LoginUser.Password}" />
+
+            <Label
+                Margin="10"
+                Text="Invalid password"
+                TextColor="Red"
+                FontSize="12"
+                IsVisible= "false" />
+        </VerticalStackLayout>
 
         <HorizontalStackLayout Grid.Row="3"
-                               Grid.Column="1"
-                               HorizontalOptions="Center">
+                               Grid.Column="1">
 
             <Button Text="Register"
                 Command="{Binding GoToRegisterCommand}"
-                MinimumWidthRequest="100"
-                Scale="0.95" />
+                HorizontalOptions="Start"
+                MinimumWidthRequest="150" />
 
             <Button x:Name= "loginButton"
                 Text="Login"
                 Command="{Binding LoginCommand}"
-                MinimumWidthRequest="100"
-                Scale="0.95" />
+                Margin="50,0,0,0"
+                MinimumWidthRequest="150" />
         </HorizontalStackLayout>
 
         <Label Grid.Row ="4"
