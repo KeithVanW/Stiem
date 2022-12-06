@@ -9,11 +9,6 @@ namespace Stiem.ViewModel
         public ObservableCollection<Game> CartGames { get; } = new();
 
         [ObservableProperty]
-        private bool buyCartVisibility = false;
-        [ObservableProperty]
-        private bool clearCartVisibility = false;
-
-        [ObservableProperty]
         private double totalPrice;
 
         private CartService _cartService;
@@ -36,17 +31,6 @@ namespace Stiem.ViewModel
             foreach (var game in games)
             {
                 CartGames.Add(game);
-            }
-
-            if (CartGames.Any())
-            {
-                buyCartVisibility = true;
-                clearCartVisibility = true;
-            }
-            else 
-            {
-                buyCartVisibility = false;
-                clearCartVisibility = false;
             }
         }
 

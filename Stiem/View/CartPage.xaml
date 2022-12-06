@@ -112,7 +112,6 @@
                 VerticalOptions="Center"
                 BackgroundColor="DarkGreen"
                 MinimumWidthRequest="100"
-                IsVisible="{Binding BuyCartVisibility}"
                 Padding="5"/>
 
             <Label FontSize="18"
@@ -129,7 +128,6 @@
                 BackgroundColor="DarkRed"
                 Padding="5"
                 MinimumWidthRequest="100"
-                IsVisible="{Binding ClearCartVisibility}"
                 Command="{Binding ClearCartCommand}" />
         </HorizontalStackLayout>
     </Grid>

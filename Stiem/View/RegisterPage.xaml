@@ -3,13 +3,149 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Stiem.View.RegisterPage"
              Title="RegisterPage"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:model="clr-namespace:Stiem.Model"
              xmlns:viewmodel="clr-namespace:Stiem.ViewModel"
              x:DataType="viewmodel:RegisterViewModel"
              MaximumHeightRequest="800"
              MaximumWidthRequest="450">
 
-    
-    
-    
+    <ContentPage.Resources>
+        <Style x:Key="InvalidEntryStyle" TargetType="Entry">
+            <Setter Property="TextColor" Value="Red" />
+        </Style>
+        <Style x:Key="ValidEntryStyle" TargetType="Entry">
+            <Setter Property="TextColor" Value="Green" />
+        </Style>
+    </ContentPage.Resources>
+
+    <Grid ColumnDefinitions="50, 350, 50"
+          RowDefinitions="200, 48, 80, 120, 48, 48, *"
+          BackgroundColor="Black"
+          RowSpacing="25">
+
+        <Image Source="user.png"
+               Grid.Row="0"
+               Grid.Column="1"
+               MaximumWidthRequest="100"
+               MaximumHeightRequest="100"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"/>
+
+        <!-- Email -->
+
+        <VerticalStackLayout Grid.Row="1" Grid.Column="1">
+        
+        <Entry Placeholder="Enter emailadress..."
+               VerticalTextAlignment="Center"
+               HeightRequest="48">
+
+            <Entry.Behaviors>
+
+                <toolkit:EmailValidationBehavior
+                        Flags="ValidateOnValueChanged"
+                        x:Name="EmailValidator"
+                        DecorationFlags="Trim"
+                        InvalidStyle="{StaticResource InvalidEntryStyle}"
+                        ValidStyle="{StaticResource ValidEntryStyle}"/>
+                
+            </Entry.Behaviors>
+        </Entry>
+
+        <Label
+            Margin="10"
+            Text="Invalid email"
+            TextColor="Red"
+            FontSize="12"
+            IsVisible="{Binding IsNotValid, Source={x:Reference EmailValidator}}" />
+
+        </VerticalStackLayout>
+
+        <!-- Username -->
+        
+        <Entry Grid.Row="2"
+               Grid.Column="1"
+               HeightRequest="48"
+               Placeholder="Enter username..."
+               TextColor="Green"/>
+
+        <!-- Password -->
+
+        <VerticalStackLayout 
+            Grid.Row="3"
+            Grid.Column="1">
+        
+        <Entry IsPassword="True"
+               Placeholder="Enter password..."
+               x:Name="passwordEntry"
+               HeightRequest="48">
+
+            <Entry.Behaviors>
+                <toolkit:MultiValidationBehavior
+                InvalidStyle="{StaticResource InvalidEntryStyle}"
+                ValidStyle="{StaticResource ValidEntryStyle}"
+                Flags="ValidateOnValueChanged">
+
+                    <toolkit:CharactersValidationBehavior
+                    x:Name="DigitValidation"
+                    CharacterType="Digit"
+                    MinimumCharacterTypeCount="1"
+                    toolkit:MultiValidationBehavior.Error="1 digit"
+                    RegexPattern="" />
+
+                    <toolkit:CharactersValidationBehavior
+                    x:Name="UpperValidation"
+                    CharacterType="UppercaseLetter"
+                    MinimumCharacterTypeCount="1"
+                    toolkit:MultiValidationBehavior.Error="1 upper case"
+                    RegexPattern="" />
+
+                    <toolkit:CharactersValidationBehavior
+                    x:Name="SymbolValidation"
+                    CharacterType="NonAlphanumericSymbol"
+                    MinimumCharacterTypeCount="1"
+                    toolkit:MultiValidationBehavior.Error="1 symbol"
+                    RegexPattern="" />
+
+                    <toolkit:CharactersValidationBehavior
+                    x:Name="AnyValidation"
+                    CharacterType="Any"
+                    MinimumCharacterTypeCount="6"
+                    toolkit:MultiValidationBehavior.Error="6 characters"
+                    RegexPattern="" />
+                </toolkit:MultiValidationBehavior>
+            </Entry.Behaviors>
+        </Entry>
+
+                <Label
+                    Margin="10"
+                    Text="Minimum 6 characters (1 capital, 1 symbol, 1 digit) "
+                    TextColor="DimGrey"
+                    FontSize="12"/>
+                
+                <Label
+                    Margin="10,0"
+                    Text="Invalid Password "
+                    TextColor="Red"
+                    FontSize="12"
+                    IsVisible="{Binding IsNotValid, Source={x:Reference DigitValidation}}" />
+
+        </VerticalStackLayout>
+
+        <!-- Button -->
+
+        <Button
+                Grid.Row="4"
+                Grid.Column="1"
+                Text="Register"
+                MinimumWidthRequest="100"
+                Scale="0.95" />
+
+        <Label Grid.Row ="5"
+           Grid.Column="1"
+           HorizontalOptions="Center"
+           x:Name="registerResponse"
+           Text="{Binding ErrorMessage}"
+           TextColor="Red" />
+    </Grid>
 </ContentPage>
