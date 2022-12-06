@@ -20,7 +20,7 @@
     </ContentPage.Resources>
 
     <Grid ColumnDefinitions="50, 350, 50"
-          RowDefinitions="*, 48, 48, 48, 48, 48, *"
+          RowDefinitions="200, 48, 80, 120, 48, 48, *"
           BackgroundColor="Black"
           RowSpacing="25">
 
@@ -29,14 +29,16 @@
                Grid.Column="1"
                MaximumWidthRequest="100"
                MaximumHeightRequest="100"
-               HorizontalOptions="Center" />
+               HorizontalOptions="Center"
+               VerticalOptions="Center"/>
 
         <!-- Email -->
+
+        <VerticalStackLayout Grid.Row="1" Grid.Column="1">
         
-        <Entry Grid.Row="1"
-               Grid.Column="1"
-               Placeholder="Enter emailadress..."
-               VerticalTextAlignment="Center">
+        <Entry Placeholder="Enter emailadress..."
+               VerticalTextAlignment="Center"
+               HeightRequest="48">
 
             <Entry.Behaviors>
 
@@ -51,27 +53,32 @@
         </Entry>
 
         <Label
-            Grid.Row="1"
-            Grid.Column="1"
+            Margin="10"
             Text="Invalid email"
             TextColor="Red"
-            FontSize="10"
+            FontSize="12"
             IsVisible="{Binding IsNotValid, Source={x:Reference EmailValidator}}" />
+
+        </VerticalStackLayout>
 
         <!-- Username -->
         
         <Entry Grid.Row="2"
                Grid.Column="1"
-               IsPassword="True"
-               Placeholder="Enter username..." />
+               HeightRequest="48"
+               Placeholder="Enter username..."
+               TextColor="Green"/>
 
         <!-- Password -->
 
-        <Entry Grid.Row="3"
-               Grid.Column="1"
-               IsPassword="True"
+        <VerticalStackLayout 
+            Grid.Row="3"
+            Grid.Column="1">
+        
+        <Entry IsPassword="True"
                Placeholder="Enter password..."
-               x:Name="passwordEntry">
+               x:Name="passwordEntry"
+               HeightRequest="48">
 
             <Entry.Behaviors>
                 <toolkit:MultiValidationBehavior
@@ -109,6 +116,23 @@
                 </toolkit:MultiValidationBehavior>
             </Entry.Behaviors>
         </Entry>
+
+                <Label
+                    Margin="10"
+                    Text="Minimum 6 characters (1 capital, 1 symbol, 1 digit) "
+                    TextColor="DimGrey"
+                    FontSize="12"/>
+                
+                <Label
+                    Margin="10,0"
+                    Text="Invalid Password "
+                    TextColor="Red"
+                    FontSize="12"
+                    IsVisible="{Binding IsNotValid, Source={x:Reference DigitValidation}}" />
+
+        </VerticalStackLayout>
+
+        <!-- Button -->
 
         <Button
                 Grid.Row="4"
