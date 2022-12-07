@@ -23,7 +23,7 @@ namespace Stiem.ViewModel
         {
             if (await _userService.Register(RegisterUser))
             {
-                await Shell.Current.GoToAsync(nameof(MainPage));
+                await Shell.Current.GoToAsync("..");
             }
             else
             {
