@@ -104,7 +104,6 @@
                                HorizontalOptions="Center"
                                VerticalOptions="Center">
 
-
             <Button x:Name="BuyCartButton"
                 FontSize="12"
                 Text="Buy"
@@ -112,7 +111,7 @@
                 VerticalOptions="Center"
                 BackgroundColor="DarkGreen"
                 MinimumWidthRequest="100"
-                Padding="5"/>
+                Padding="5" />
 
             <Label FontSize="18"
                Text="{Binding TotalPrice, StringFormat='EUR: {0}'}"

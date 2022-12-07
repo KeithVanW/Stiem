@@ -1,12 +1,10 @@
-using Microsoft.Maui.Controls;
-
 namespace Stiem.View;
 
 public partial class RegisterPage : ContentPage
 {
-	public RegisterPage(RegisterViewModel viewModel)
-	{
-		InitializeComponent();
-		BindingContext= viewModel;
+    public RegisterPage(RegisterViewModel viewModel)
+    {
+        InitializeComponent();
+        BindingContext = viewModel;
     }
 }

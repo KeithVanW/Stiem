@@ -62,14 +62,13 @@
                Grid.Column="1"
                Grid.ColumnSpan="2"
                TextColor="AntiqueWhite"
-               
+
                Placeholder="Search by name..."
                VerticalOptions="Center"
                VerticalTextAlignment="Center"
-               Text="{Binding NameParam}"/>
+               Text="{Binding NameParam}" />
 
-
-            <Entry 
+            <Entry
                x:Name="searchByGenreEntry"
                Grid.Row="1"
                Grid.Column="1"
@@ -79,8 +78,7 @@
                Placeholder="Search by genre..."
                VerticalOptions="Center"
                VerticalTextAlignment="Center"
-               Text="{Binding GenreParam}"/>
-
+               Text="{Binding GenreParam}" />
         </VerticalStackLayout>
 
         <!--Body-->
@@ -88,7 +86,7 @@
         <Label BackgroundColor="Orange"
                Grid.Row="3"
                Grid.Column="0"
-               Grid.ColumnSpan="3"/>
+               Grid.ColumnSpan="3" />
 
         <CollectionView
                 ItemsSource="{Binding Games}"
@@ -157,8 +155,7 @@
         <Label BackgroundColor="Orange"
                Grid.Row="5"
                Grid.Column="0"
-               Grid.ColumnSpan="3"/>
+               Grid.ColumnSpan="3" />
 
-        <!--Footer-->
     </Grid>
 </ContentPage>
