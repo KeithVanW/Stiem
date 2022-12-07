@@ -1,6 +1,6 @@
-﻿using Stiem.Services;
+﻿using CommunityToolkit.Maui;
+using Stiem.Services;
 using Stiem.View;
-using CommunityToolkit.Maui;
 
 namespace Stiem;
 

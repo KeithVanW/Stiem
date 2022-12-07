@@ -48,8 +48,6 @@ namespace Stiem.Services
             HttpResponseMessage response = client.PostAsync(url, content).Result;
 
             await GetGamesInCartAsync();
-
-            // if badrequest check -> already in DB
         }
 
         public async Task RemoveFromCart(int gameID)

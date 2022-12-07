@@ -30,109 +30,106 @@
                MaximumWidthRequest="100"
                MaximumHeightRequest="100"
                HorizontalOptions="Center"
-               VerticalOptions="Center"/>
+               VerticalOptions="Center" />
 
         <!-- Email -->
 
         <VerticalStackLayout Grid.Row="1" Grid.Column="1">
-        
-        <Entry Placeholder="Enter emailadress..."
+
+            <Entry Placeholder="Enter emailadress..."
                VerticalTextAlignment="Center"
                HeightRequest="48"
                Text="{Binding RegisterUser.Email}">
 
-            <Entry.Behaviors>
+                <Entry.Behaviors>
 
-                <toolkit:EmailValidationBehavior
+                    <toolkit:EmailValidationBehavior
                         Flags="ValidateOnValueChanged"
                         x:Name="EmailValidator"
                         DecorationFlags="Trim"
                         InvalidStyle="{StaticResource InvalidEntryStyle}"
-                        ValidStyle="{StaticResource ValidEntryStyle}"/>
-                
-            </Entry.Behaviors>
-        </Entry>
+                        ValidStyle="{StaticResource ValidEntryStyle}" />
+                </Entry.Behaviors>
+            </Entry>
 
-        <Label
+            <Label
             Margin="10"
             Text="Invalid email"
             TextColor="Red"
             FontSize="12"
             IsVisible="{Binding IsNotValid, Source={x:Reference EmailValidator}}" />
-
         </VerticalStackLayout>
 
         <!-- Username -->
-        
+
         <Entry Grid.Row="2"
                Grid.Column="1"
                HeightRequest="48"
                Placeholder="Enter username..."
                TextColor="Green"
-               Text="{Binding RegisterUser.Username}"/>
+               Text="{Binding RegisterUser.Username}" />
 
         <!-- Password -->
 
-        <VerticalStackLayout 
+        <VerticalStackLayout
             Grid.Row="3"
             Grid.Column="1">
-        
-        <Entry IsPassword="True"
+
+            <Entry IsPassword="True"
                Placeholder="Enter password..."
                x:Name="passwordEntry"
                HeightRequest="48"
                Text="{Binding RegisterUser.Password}">
 
-            <Entry.Behaviors>
-                <toolkit:MultiValidationBehavior
+                <Entry.Behaviors>
+                    <toolkit:MultiValidationBehavior
                 InvalidStyle="{StaticResource InvalidEntryStyle}"
                 ValidStyle="{StaticResource ValidEntryStyle}"
                 Flags="ValidateOnValueChanged">
 
-                    <toolkit:CharactersValidationBehavior
+                        <toolkit:CharactersValidationBehavior
                     x:Name="DigitValidation"
                     CharacterType="Digit"
                     MinimumCharacterTypeCount="1"
                     toolkit:MultiValidationBehavior.Error="1 digit"
                     RegexPattern="" />
 
-                    <toolkit:CharactersValidationBehavior
+                        <toolkit:CharactersValidationBehavior
                     x:Name="UpperValidation"
                     CharacterType="UppercaseLetter"
                     MinimumCharacterTypeCount="1"
                     toolkit:MultiValidationBehavior.Error="1 upper case"
                     RegexPattern="" />
 
-                    <toolkit:CharactersValidationBehavior
+                        <toolkit:CharactersValidationBehavior
                     x:Name="SymbolValidation"
                     CharacterType="NonAlphanumericSymbol"
                     MinimumCharacterTypeCount="1"
                     toolkit:MultiValidationBehavior.Error="1 symbol"
                     RegexPattern="" />
 
-                    <toolkit:CharactersValidationBehavior
+                        <toolkit:CharactersValidationBehavior
                     x:Name="AnyValidation"
                     CharacterType="Any"
                     MinimumCharacterTypeCount="6"
                     toolkit:MultiValidationBehavior.Error="6 characters"
                     RegexPattern="" />
-                </toolkit:MultiValidationBehavior>
-            </Entry.Behaviors>
-        </Entry>
+                    </toolkit:MultiValidationBehavior>
+                </Entry.Behaviors>
+            </Entry>
 
-                <Label
+            <Label
                     Margin="10"
                     Text="Minimum 6 characters (1 capital, 1 symbol, 1 digit)"
                     TextColor="DimGrey"
-                    FontSize="12"/>
-                
-                <Label
+                    FontSize="12" />
+
+            <Label
                     Margin="10,0"
                     Text="Invalid Password "
                     TextColor="Red"
                     FontSize="12"
                     IsVisible="{Binding IsNotValid, Source={x:Reference DigitValidation}}" />
-
         </VerticalStackLayout>
 
         <!-- Button -->
@@ -143,7 +140,7 @@
                 Text="Register"
                 MinimumWidthRequest="100"
                 Scale="0.95"
-            Command="{Binding RegisterCommand}"/>
+            Command="{Binding RegisterCommand}" />
 
         <Label Grid.Row ="5"
            Grid.Column="1"
